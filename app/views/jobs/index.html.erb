@@ -1,0 +1,21 @@
+<div class="col-md-12">
+  <div class="job">
+    <%= link_to("Add a Job", new_job_path, class: "btn btn-default pull-right") %>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Last Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+      <tr>
+        <td><%=link_to(job.title, job_path(job)) %></title></td>
+        <td><%= job.created_at %></title></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
