@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :job_relationships
   has_many :created_jobs, :through => :job_relationships, :source => :job
 
+  def admin?
+    email == 'cl@1.com'
+  end
+
 end
