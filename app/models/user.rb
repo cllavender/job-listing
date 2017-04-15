@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :created_jobs, :through => :job_relationships, :source => :job
 
   def admin?
-    email == 'cl@1.com'
+    is_admin
   end
 
 end

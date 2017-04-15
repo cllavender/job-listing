@@ -11,7 +11,7 @@
     <tbody>
       <% @jobs.each do |job| %>
       <tr>
-        <td>(public)<%=link_to(job.title, job_path(job)) %></td>
+        <td><%=link_to(job.title, job_path(job)) %></td>
         <td><%= job.created_at %></td>
         <td><%= job.user.email %></td>
       </tr>
