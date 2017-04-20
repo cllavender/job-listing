@@ -7,4 +7,5 @@ class Job < ApplicationRecord
   has_many :job_relationships
   has_many :admins, through: :job_relationships, source: :user
   has_many :resumes
+  
 end
