@@ -3,17 +3,19 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Last Update</th>
-        <th>Creator</th>
+        <th>职缺</th>
+        <th>薪资下限</th>
+        <th>薪资上限</th>
+        <th>刊登时间</th>
       </tr>
     </thead>
     <tbody>
       <% @jobs.each do |job| %>
       <tr>
         <td><%=link_to(job.title, job_path(job)) %></td>
+        <td><%= job.wage_lower_bound %></td>
+        <td><%= job.wage_upper_bound %></td>
         <td><%= job.created_at %></td>
-        <td><%= job.user.email %></td>
       </tr>
       <% end %>
     </tbody>
