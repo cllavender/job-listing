@@ -5,21 +5,30 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Title</th>
-        <th colspan="2"></th>
-        <th>Last Update</th>
+        <th>职缺</th>
+        <th>收到履历数量</th>
+        <th>薪资下限</th>
+        <th>薪资上限</th>
+        <th colspan="3">管理选项</th>
+        <th>刊登时间</th>
       </tr>
     </thead>
     <tbody>
       <% @jobs.each do |job| %>
       <tr>
-        <% if job.is_hidden == true %>
-          <td>(private)<%=link_to(job.title, admin_job_path(job)) %></title></td>
-        <% else %>
-          <td>(public)<%=link_to(job.title, admin_job_path(job)) %></title></td>
-        <% end %>
-        <td><%= link_to("Edit", edit_admin_job_path(job), class: "btn btn-default btn-xs") %></td>
-        <td><%= link_to("Destroy", admin_job_path(job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-xs") %></td>
+        <td><%=link_to(job.title, admin_job_path(job)) %></title></td>
+        <td><%= job.resumes.count %></title></td>
+        <td><%= job.wage_lower_bound %></title></td>
+        <td><%= job.wage_upper_bound %></title></td>
+        <td><%= link_to("Edit", edit_admin_job_path(job), :class => "btn btn-info btn-xs") %></td>
+        <td><%= link_to("Destroy", admin_job_path(job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs") %></td>
+        <td>
+          <% if job.is_hidden %>
+            Hide
+          <% else %>
+            Publish
+          <% end %>
+        </td>
         <td><%= job.created_at %></title></td>
       </tr>
       <% end %>
