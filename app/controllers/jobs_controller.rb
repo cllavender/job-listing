@@ -16,6 +16,11 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @resumes = @job.resumes.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    
+    if @job.is_hidden
+        flash[:warning] = "This Job already archived"
+        redirect_to jobs_path
+    end
   end
 
  
