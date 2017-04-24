@@ -1,20 +1,137 @@
+<!-- Add this css File in head tag-->
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<div class="col-md-12">
-  <div class="row box">
-    <div class="box-inner col-md-6 col-md-offset-3">
-      <h1 class="title">搜寻</h1>
-      <p class="slogan"> 诗和远方，不如舌尖的惊喜，家的味道。
-        <br>
-        加入语
-        <br>
-        凭借自己的努力和天份也会变 Winner
-      </p>
-      <p class="lead">
-        <%= link_to '加入我们', jobs_path, class: 'btn btn-danger' %>
-      </p>
-    </div>
-  </div>
-</div>
+    <title>搜寻</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/full-slider.css" rel="stylesheet">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+</head>
+
+<!--
+       If you want to change #bootstrap-touch-slider id then you have to change Carousel-indicators and Carousel-Control  #bootstrap-touch-slider slide as well
+       Slide effect: slide, fade
+       Text Align: slide_style_center, slide_style_left, slide_style_right
+       Add Text Animation: https://daneden.github.io/animate.css/
+       -->
+<body>
+       <div class="row">
+
+       <div id="bootstrap-touch-slider" class="carousel bs-slider slide  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000" >
+
+           <!-- Indicators -->
+           <ol class="carousel-indicators">
+               <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+               <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+               <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+           </ol>
+
+           <!-- Wrapper For Slides -->
+           <div class="carousel-inner" role="listbox">
+
+               <!-- Third Slide -->
+               <div class="item active">
+
+                   <!-- Slide Background -->
+                   <img src="images/header1.jpg" alt="美食家园"  class="slide-image"/>
+                   <div class="bs-slider-overlay"></div>
+
+                   <div class="container">
+                       <div class="row">
+                           <!-- Slide Text Layer -->
+                           <div class="slide-text slide_style_left">
+                               <h1 data-animation="animated zoomInRight">美食家园</h1>
+                               <p data-animation="animated fadeInLeft">诗和远方，不如舌尖的惊喜，家的味道！</p>
+                               <%= link_to("加入我们",jobs_path, class:"btn btn-primary") %>
+                               <%= link_to("发布职缺",admin_jobs_path, class:"btn btn-default") %>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- End of Slide -->
+
+               <!-- Second Slide -->
+               <div class="item">
+
+                   <!-- Slide Background -->
+                   <img src="images/second1.jpg" alt="美食家园"  class="slide-image"/>
+                   <div class="bs-slider-overlay"></div>
+                   <!-- Slide Text Layer -->
+                   <div class="slide-text slide_style_center">
+                       <h1 data-animation="animated flipInX">美食家园</h1>
+                       <p data-animation="animated lightSpeedIn">如果你志在创造美食，这里便是你展现的舞台！</p>
+                       <%= link_to("加入我们",jobs_path, class:"btn btn-primary") %>
+                       <%= link_to("发布职缺",admin_jobs_path, class:"btn btn-default") %>
+                   </div>
+               </div>
+               <!-- End of Slide -->
+
+               <!-- Third Slide -->
+               <div class="item">
+
+                   <!-- Slide Background -->
+                   <img src="images/third.jpg" alt="美食家园"  class="slide-image"/>
+                   <div class="bs-slider-overlay"></div>
+                   <!-- Slide Text Layer -->
+                   <div class="slide-text slide_style_right">
+                       <h1 data-animation="animated zoomInLeft">美食家园</h1>
+                       <p data-animation="animated fadeInRight">如果你是美食狂热者，这里便是你灵感的注入地！</p>
+                       <%= link_to("加入我们",jobs_path, class:"btn btn-primary") %>
+                       <%= link_to("发布职缺",admin_jobs_path, class:"btn btn-default") %>
+                   </div>
+               </div>
+               <!-- End of Slide -->
+
+
+           </div><!-- End of Wrapper For Slides -->
+
+           <!-- Left Control -->
+           <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+               <span class="fa fa-angle-left" aria-hidden="true"></span>
+               <span class="sr-only">Previous</span>
+           </a>
+
+           <!-- Right Control -->
+           <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+               <span class="fa fa-angle-right" aria-hidden="true"></span>
+               <span class="sr-only">Next</span>
+           </a>
+
+       </div> <!-- End  bootstrap-touch-slider Slider -->
+
+
+
+       <!-- Script to Activate the Carousel -->
+        <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+
+        $('#bootstrap-touch-slider').bsTouchSlider();
+
+        </script>
+
+       <script>
+        $(document).ready(function () {
+        $('.material-button-toggle').click(function () {
+            $(this).toggleClass('open');
+            $('.option').toggleClass('scale-on');
+        });
+       });
+      </script>
+     </div>
+   </body>
+
+
 
 <div class="content-section-a">
   <div class="container">
@@ -22,8 +139,8 @@
       <div class="col-lg-5 col-sm-6">
         <hr class="section-heading-spacer">
         <div class="clearfix"></div>
-        <h2 class="section-heading">找工作一定要带手机</h2>
-        <p class="lead">因为没带手机就不能联络公司</p>
+        <h2 class="section-heading">拥有美食天赋</h2>
+        <p class="lead">中式●西式●日式<br>任你发挥</p>
       </div>
       <div class="col-lg-5 col-lg-offset-2 col-sm-6">
         <%= image_tag 'pic-1.jpg', class: 'img-responsive' %>
@@ -38,8 +155,8 @@
       <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
         <hr class="section-heading-spacer">
         <div class="clearfix"></div>
-        <h2 class="section-heading">一定要把履历写好在投</h2>
-        <p class="lead">履历如果不会写就一定要多上网寻求帮助，例如  <a target="_blank" href="http://blog.niclin.tw">Nic 的 Blog</a>! 啦啦啦啦啦啦啦</p>
+        <h2 class="section-heading">热爱美食</h2>
+        <p class="lead">管理●后勤 <br>你即是家园一员</p>
       </div>
       <div class="col-lg-5 col-sm-pull-6  col-sm-6">
         <%= image_tag 'pic-2.jpg', class: 'img-responsive' %>
@@ -54,12 +171,11 @@
       <div class="col-lg-5 col-sm-6">
         <hr class="section-heading-spacer">
         <div class="clearfix"></div>
-        <h2 class="section-heading">这是可以乱改的字<br>动手试试看吧</h2>
-        <p class="lead">摩改大赛可以参考<a target="_blank" href="https://forum.qzy.camp/">论坛资源</a></p>
+        <h2 class="section-heading">创意发烧友</h2>
+        <p class="lead">你敢想--我们就敢做</p>
       </div>
       <div class="col-lg-5 col-lg-offset-2 col-sm-6">
         <%= image_tag 'pic-3.jpg', class: 'img-responsive' %>
       </div>
     </div>
   </div>
-</div>
