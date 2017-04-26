@@ -7,8 +7,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
-          <li><%= link_to("注册", new_user_registration_path) %></li>
-          <li><%= link_to("登陆", new_user_session_path) %></li>
+          <li><a href="#" data-toggle="modal" data-target="#signup-modal">注册</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#login-modal">登入</a></li>
         <% else %>
           <li class="dropdown">
             <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -27,4 +27,81 @@
       </ul>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="loginmodal-container">
+       <h2>Log in</h2>
+       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+         <div class="form-inputs">
+           <%= f.input :email, required: false, autofocus: true %>
+           <%= f.input :password, required: false %>
+           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+         </div>
+         <div class="form-actions">
+           <%= f.button :submit, "Log in" %>
+         </div>
+       <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <div class="modal-header">
+        <h2 class="text-center">账户注册</h2>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
+                            :html => {:id => "sign_up_user"}, :format => :jason, :remote => true) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+            </span>
+            <%= f.input :name, required: true, placeholder: "真实姓名" %>
+          </div>
+          <br>
+
+          <div class="input-group input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </span>
+            <%= f.email_field :email, autofocus: true, required: true, class: "form-control", placeholder: "联系邮箱" %>
+          </div>
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <%= f.password_field :password, autocomplete: "off", required: true, minlength: 8, class: "form-control", placeholder: "密码(至少6位)" %>
+          </div>
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 8, class: "form-control", placeholder: "密码确认" %>
+          </div>
+
+          <div class="form_actions">
+            <br>
+            <%= f.submit "Sign up", class: 'btn btn-info' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      <button class="btn btn-default pull-left" data-toggle="modal" data-target="#login-modal" data-dismiss='modal'>已经注册，请登陆</button>
+      <button type="submit" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span>取消</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
