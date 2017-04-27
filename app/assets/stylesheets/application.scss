@@ -196,10 +196,9 @@ footer .footer-below {
 }
 
 .loginmodal-container input[type=submit] {
-  width: 100%;
+  width: 40%;
   display: block;
-  margin-bottom: 10px;
-  position: relative;
+  margin: 0 auto;
 }
 
 .loginmodal-container input[type=text], input[type=password] {
@@ -230,7 +229,7 @@ footer .footer-below {
   font-size: 14px;
   font-family: 'Arial', sans-serif;
   font-weight: 700;
-  height: 36px;
+  height: 30px;
   padding: 0 8px;
 /* border-radius: 3px; */
 /* -webkit-user-select: none;

@@ -103,6 +103,14 @@
 
             <div class="input-group">
               <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+              </span>
+              <%= f.text_field :name, required: true, class: "form-control", placeholder: "姓名" %>
+            </div>
+            <br/>
+
+            <div class="input-group">
+              <span class="input-group-addon">
                 <span class="glyphicon glyphicon-lock"></span>
               </span>
                <%= f.password_field :password, autocomplete: "off", required: true,minlength: 6, class: "form-control", placeholder: "输入密码" %>
@@ -113,12 +121,14 @@
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-lock"></span>
               </span>
-              <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 8, class: "form-control", placeholder: "确认密码" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", required: true, minlength: 6, class: "form-control", placeholder: "确认密码" %>
             </div>
           <br/>
 
           <div class="form-actions">
-             <%= f.submit "注册", class: 'btn btn-info' %>
+            <div class="center-block">
+              <%= f.submit "注册", class: 'btn btn-info' %>
+             </div>
           </div>
         <% end %>
       </div>
