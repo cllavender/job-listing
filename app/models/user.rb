@@ -13,4 +13,12 @@ class User < ApplicationRecord
     is_admin
   end
 
+  def company_admin?
+    is_company_admin
+  end
+
+  def company_user?
+    user_category == 'company'
+  end
+
 end

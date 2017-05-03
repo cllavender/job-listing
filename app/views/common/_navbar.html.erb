@@ -17,9 +17,14 @@
             </a>
             <ul class="dropdown-menu">
               <% if current_user.admin? %>
-              <li> <%= link_to("Admin Panel", admin_jobs_path) %> </li>
+              <li> <%= link_to("管理所有职缺", admin_jobs_path) %> </li>
               <li class="divider"></li>
               <% end %>
+              <% if current_user.is_company_admin? && current_user.company_user? %>
+              <li> <%= link_to("管理本企业职缺", company_jobs_path) %> </li>
+              <li class="divider"></li>
+              <% end %>
+
               <li><%= link_to("退出", destroy_user_session_path, method: :delete) %></li>
             </ul>
           </li>

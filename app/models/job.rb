@@ -5,17 +5,17 @@ class Job < ApplicationRecord
   validates :wage_lower_bound, numericality: { greater_than: 0}
   belongs_to :user
   has_many :job_relationships
-  has_many :admins, through: :job_relationships, source: :user
+  has_many :members, through: :job_relationships, source: :user
   has_many :resumes
-  
+
   def publish!
     self.is_hidden = false
     self.save
   end
-  
+
   def hide!
     self.is_hidden = true
     self.save
   end
-  
+
 end

@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     end
    end
 
+   namespace :company do
+     resources :jobs
+   end
+
 end

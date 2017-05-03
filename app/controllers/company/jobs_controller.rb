@@ -1,13 +1,12 @@
-class Admin::JobsController < ApplicationController
+class Company::JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :index]
-  before_action :require_is_admin
   layout "admin"
+  before_action :require_is_company_admin
+  before_action :require_is_company_user
 
     def index
-      @jobs = Job.all.order("created_at DESC")
+      @jobs = current_user.jobs.order("created_at DESC")
     end
-
-
 
    def show
     @job = Job.find(params[:id])
@@ -22,7 +21,7 @@ class Admin::JobsController < ApplicationController
     @job.user = current_user
 
     if @job.save
-       redirect_to admin_jobs_path
+       redirect_to company_jobs_path
      else
        render :new
     end
@@ -35,7 +34,7 @@ class Admin::JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if @job.update(job_params)
-      redirect_to admin_jobs_path, notice: "Update success!"
+      redirect_to company_jobs_path, notice: "Update success!"
     else
       render :edit
     end
@@ -44,15 +43,23 @@ class Admin::JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    redirect_to admin_jobs_path, alert: "Job deleted!"
+    redirect_to company_jobs_path, alert: "Job deleted!"
   end
 
-  def require_is_admin
-    unless current_user.admin?
-      flash[:alert] = 'You are not admin'
+  def require_is_company_admin
+    unless current_user.company_admin?
+      flash[:alert] = 'You are not company admin'
       redirect_to root_path
     end
   end
+
+
+    def require_is_company_user
+      unless current_user.company_user?
+        flash[:alert] = 'You are not a user of company'
+        redirect_to root_path
+      end
+    end
 
   def publish
     @job = Job.find(params[:id])
@@ -62,7 +69,6 @@ class Admin::JobsController < ApplicationController
   end
 
   def hide
-    @job = Job.find(params[:id])
     @job.hide!
 
     redirect_to :back
