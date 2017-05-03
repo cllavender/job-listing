@@ -125,6 +125,10 @@
             </div>
           <br/>
 
+
+          <%= f.select :user_category, options_for_select([['一般用户','applicant'],['企业用户','company'],['管理员','admin']], params[:user_category]),{}, { :class => 'span3 controls controls-row' } %>
+          <br/>
+
           <div class="form-actions">
             <div class="center-block">
               <%= f.submit "注册", class: 'btn btn-info' %>

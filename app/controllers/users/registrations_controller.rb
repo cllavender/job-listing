@@ -5,6 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def registration_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:user_category])
   end
 end
