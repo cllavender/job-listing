@@ -1,0 +1,18 @@
+<div class="col-md-12">
+  <div class="job">
+    <%= link_to("Edit", edit_admin_job_path(@job), class: "btn btn-primary pull-right")%>
+  </div>
+  <h2><%= @job.title %></h2>
+  <p><%= @job.description %></p>
+  <br>
+  Wage Upper Bound : <%= @job.wage_upper_bound %>
+  <br>
+  <br>
+  Wage Lower Bound : <%= @job.wage_lower_bound %>
+  <br>
+  <br>
+  Contact Email : <%= @job.contact_email %>
+
+
+
+</div>

@@ -18,6 +18,7 @@
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require bootstrap-sprockets
+// = require bootstrap/tab
 /*Bootstrap Carousel Touch Slider.
 
 http://bootstrapthemes.co

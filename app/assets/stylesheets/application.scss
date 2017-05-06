@@ -36,7 +36,7 @@
  }
 
 .navbar-default .navbar-brand {
-    color: #FF6F00;
+    color: #f8f8f8;
     padding: 10px 15px;
     line-height: 30px;
 }
@@ -48,7 +48,7 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #EF6C00;
+    color: #f8f8f8;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -105,7 +105,7 @@
      .lead {
          margin-bottom: 60px;
          text-align: center;
-         color: white;
+         color: #212121;
      }
  }
 
@@ -145,7 +145,8 @@ footer {
 
 footer .footer-below {
     padding: 25px 0;
-    background-color: #BDBDBD;
+    background-color: #111C32;
+    opacity:0.92;
 }
 
 
@@ -268,4 +269,18 @@ footer .footer-below {
 
 .login-help{
   font-size: 12px;
+}
+
+// footer
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.body-content {
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+.footer {
+  height: 60px;
+  margin-top: 60px;
 }

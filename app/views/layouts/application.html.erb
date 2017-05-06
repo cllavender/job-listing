@@ -9,18 +9,18 @@
   </head>
 
   <body>
-
-    <div class="container-fluid">
-      <div class="row">
-        <%= render "common/navbar" %>
-        <%= render "common/flashes" %>
-        <%= yield %>
+    <div class="container-fluid body-content">
+      <div class="content-inside">
+        <div class="row">
+          <%= render "common/navbar" %>
+        </div>
+          <%= render "common/flashes" %>
+          <%= yield %>
+        </div>
       </div>
-    </div>
-
     <div class="row">
       <%= render "common/footer" %>
     </div>
-
   </body>
+
 </html>

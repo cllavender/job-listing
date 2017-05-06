@@ -1,11 +1,35 @@
 <div class="col-md-8 col-centered" >
-  <div class="panel panel-default">
-  <div class="panel-heading">
+  <div class="panel panel-primary">
+  <div class="panel-heading ">
     <h3 class="panel-title">
       <h3>
         求职专区
+
         <div class="dropdown clearfix  pull-right">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
+            分类
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+            <li>
+              <%= link_to("西点师", jobs_path(:category => "baker")) %>
+            </li>
+            <li>
+              <%= link_to("热炒师", jobs_path(:category => "frieddish")) %>
+            </li>
+            <li>
+              <%= link_to("冷菜师", jobs_path(:category => "colddish")) %>
+            </li>
+            <li>
+              <%= link_to("管理", jobs_path(:category => "admin")) %>
+            </li>
+            <li>
+              <%= link_to("后勤", jobs_path(:category => "logistics")) %>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown clearfix  pull-right">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
             排序
             <span class="caret"></span>
           </button>
@@ -30,6 +54,7 @@
         <thead>
           <tr>
             <th>职缺</th>
+            <th>职缺类型</th>
             <th>薪资下限</th>
             <th>薪资上限</th>
             <th>公司名称</th>
@@ -40,6 +65,7 @@
           <% @jobs.each do |job| %>
           <tr>
             <td><%=link_to(job.title, job_path(job)) %></td>
+            <td><%= job.job_type %></title></td>
             <td><%= job.wage_lower_bound %></td>
             <td><%= job.wage_upper_bound %></td>
             <td><%= job.company_name %></td>

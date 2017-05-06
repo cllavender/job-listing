@@ -1,14 +1,14 @@
 <div class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" herf="/"><img src='<%= image_url 'home.png' %>'>美食家园</a>
+      <a class="navbar-brand" href='<%= root_path %>'><img src='<%= image_url 'home.png' %>'>美食家园</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
-          <li><a href="#" data-toggle="modal" data-target="#signup-modal">注册</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#login-modal">登陆</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#signup-modal"><span class="glyphicon glyphicon-user"> 注册</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-share-alt"> 登陆</a></li>
         <% else %>
           <li class="dropdown">
             <a herf="#" class="dropdown-toggle" data-toggle="dropdown">

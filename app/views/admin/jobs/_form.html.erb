@@ -1,12 +1,13 @@
 <%= simple_form_for [:admin,@job] do |f| %>
 <div class="form-job">
-  <%= f.input :title, input_html: { class: "form-control" } %>
-  <%= f.input :description, input_html: { class: "form-control"} %>
+  <%= f.input :title, input_html: { class: "form-control" }, :label => "职缺名称"%>
+  <%= f.input :description, input_html: { class: "form-control"}, :label => "职缺描述" %>
+  <%= f.select :job_type, options_for_select([['西点师','西点师'],['热炒师','热炒师'],['冷菜师','冷菜师'],['管理','管理'],['后勤','后勤']], params[:user_category]),{}, { :class => 'span3 controls controls-row' } %>
   <%= f.input :wage_upper_bound, :label => "薪资上限" %>
   <%= f.input :wage_lower_bound, :label => "薪资下限" %>
   <%= f.input :company_name, :label => "公司名称" %>
-  <%= f.input :contact_email %>
-  <%= f.input :is_hidden %>
+  <%= f.input :contact_email, :label => "联系邮箱"%>
+  <%= f.input :is_hidden, :label => "隐藏职缺"%>
 </div>
- <%= f.submit "Submit", class:"btn btn-warning" %>
+ <%= f.submit "提交", class:"btn btn-warning" %>
 <% end %>
