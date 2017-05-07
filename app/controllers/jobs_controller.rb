@@ -5,11 +5,11 @@ class JobsController < ApplicationController
   def index
     @jobs = case params[:order]
      when "by_lower_bound"
-       Job.where(:is_hidden => false).order("wage_lower_bound DESC").paginate(:page => params[:page], :per_page => 4)
+       Job.where(:is_hidden => false).order("wage_lower_bound DESC").paginate(:page => params[:page], :per_page => 5)
      when "by_upper_bound"
-       Job.where(:is_hidden => false).order("wage_upper_bound DESC").paginate(:page => params[:page], :per_page => 4)
+       Job.where(:is_hidden => false).order("wage_upper_bound DESC").paginate(:page => params[:page], :per_page => 5)
      else
-       Job.where(:is_hidden => false).order("created_at DESC").paginate(:page => params[:page], :per_page => 4)
+       Job.where(:is_hidden => false).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
      end
   end
 

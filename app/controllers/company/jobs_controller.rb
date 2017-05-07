@@ -4,7 +4,7 @@ class Company::JobsController < ApplicationController
   before_action :require_is_company_user
 
     def index
-      @jobs = current_user.jobs.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+      @jobs = current_user.jobs.order("created_at DESC")
     end
 
    def show
