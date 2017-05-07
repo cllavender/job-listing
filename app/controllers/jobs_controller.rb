@@ -10,8 +10,8 @@ class JobsController < ApplicationController
        Job.where(:is_hidden => false).order("wage_upper_bound DESC").paginate(:page => params[:page], :per_page => 5)
      else
        Job.where(:is_hidden => false).order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
-     end
   end
+end
 
   def show
     @job = Job.find(params[:id])
