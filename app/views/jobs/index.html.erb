@@ -1,80 +1,89 @@
-<div class="col-md-8 col-centered" >
-  <div class="panel panel-primary">
-  <div class="panel-heading ">
-    <h3 class="panel-title">
-      <h3>
-        求职专区
+<div class="col-md-12" >
+  <div class="row box">
+    <div class="box-inner col-md-10 col-md-offset-3 col-centered">
+      <div class="panel panel-success">
+        <div class="panel-heading ">
+          <h3 class="panel-title">
+            <h3>
+              求职专区
 
-        <div class="dropdown clearfix  pull-right">
-          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
-            分类
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-            <li>
-              <%= link_to("西点师", jobs_path(:category => "baker")) %>
-            </li>
-            <li>
-              <%= link_to("热炒师", jobs_path(:category => "frieddish")) %>
-            </li>
-            <li>
-              <%= link_to("冷菜师", jobs_path(:category => "colddish")) %>
-            </li>
-            <li>
-              <%= link_to("管理", jobs_path(:category => "admin")) %>
-            </li>
-            <li>
-              <%= link_to("后勤", jobs_path(:category => "logistics")) %>
-            </li>
-          </ul>
+              <div class="dropdown clearfix  pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
+                  职缺类型
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+                  <li>
+                    <%= link_to("西点师", jobs_path(:category => "baker")) %>
+                  </li>
+                  <li>
+                    <%= link_to("热炒师", jobs_path(:category => "frieddish")) %>
+                  </li>
+                  <li>
+                    <%= link_to("冷菜师", jobs_path(:category => "colddish")) %>
+                  </li>
+                  <li>
+                    <%= link_to("管理", jobs_path(:category => "admin")) %>
+                  </li>
+                  <li>
+                    <%= link_to("后勤", jobs_path(:category => "logistics")) %>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown clearfix  pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
+                  排序
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+                  <li>
+                    <%= link_to("按薪资下限排序", jobs_path(:order => "by_lower_bound")) %>
+                  </li>
+                  <li>
+                    <%= link_to("按薪资上限排序", jobs_path(:order => "by_upper_bound")) %>
+                  </li>
+                  <li>
+                    <%= link_to("按发表时间排序", jobs_path(:order => "by_created_at")) %>
+                  </li>
+                </ul>
+              </div>
+            </h3>
+          </h3>
         </div>
-        <div class="dropdown clearfix  pull-right">
-          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown">
-            排序
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-            <li>
-              <%= link_to("按薪资下限排序", jobs_path(:order => "by_lower_bound")) %>
-            </li>
-            <li>
-              <%= link_to("按薪资上限排序", jobs_path(:order => "by_upper_bound")) %>
-            </li>
-            <li>
-              <%= link_to("按发表时间排序", jobs_path(:order => "by_created_at")) %>
-            </li>
-          </ul>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <% @jobs.each do |job| %>
+              <p><%=link_to(job.title, job_path(job),:style => "color:#1565C0") %></p>
+              <div class="row">
+                <div class="col-md-3">
+                  <p><span class="glyphicon glyphicon-yen"></span> <%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %> </p>
+                </div>
+                <div class="col-md-3">
+                  <p><i class="fa fa-address-card-o" aria-hidden="true"></i>  <%= job.job_type %></p>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <span class="glyphicon glyphicon-time"></span> <%= job.created_at %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-sm-6">
+                  <span><i class="fa fa-user-circle-o" aria-hidden="true"></i>  <%= job.company_name %></span>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <span class="glyphicon glyphicon-map-marker"></span> <%= job.location %>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                  <span class="glyphicon glyphicon-envelope"></span> <%= job.contact_email %>
+                </div>
+              </div>
+              <hr style=" borber:2px blue solid; " />
+            <% end %>
+          </div>
         </div>
-      </h3>
-    </h3>
-  </div>
-  <div class="panel-body">
-    <div class="col-md-12">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>职缺</th>
-            <th>职缺类型</th>
-            <th>薪资下限</th>
-            <th>薪资上限</th>
-            <th>公司名称</th>
-            <th>刊登时间</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @jobs.each do |job| %>
-          <tr>
-            <td><%=link_to(job.title, job_path(job)) %></td>
-            <td><%= job.job_type %></title></td>
-            <td><%= job.wage_lower_bound %></td>
-            <td><%= job.wage_upper_bound %></td>
-            <td><%= job.company_name %></td>
-            <td><%= job.created_at %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      </div>
+      <div class="text-center", color="white">
+        <%= will_paginate @jobs %>
+      </div>
     </div>
   </div>
-</div>
 </div>

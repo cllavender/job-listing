@@ -5,6 +5,9 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+         <li><%= link_to("职缺一览", jobs_path) %></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
           <li><a href="#" data-toggle="modal" data-target="#signup-modal"><span class="glyphicon glyphicon-user"> 注册</a></li>

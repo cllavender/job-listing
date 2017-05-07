@@ -1,11 +1,10 @@
 class Company::JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :index]
-  layout "admin"
   before_action :require_is_company_admin
   before_action :require_is_company_user
 
     def index
-      @jobs = current_user.jobs.order("created_at DESC")
+      @jobs = current_user.jobs.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
 
    def show
@@ -79,7 +78,7 @@ class Company::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email, :is_hidden, :company_name, :job_type)
+    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email, :is_hidden, :company_name, :job_type, :location)
   end
 
 
